@@ -14,6 +14,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        JordanGauss jordanGauss = new JordanGauss();
         int[] arrayThatWantsToSort;
         int[] sortedArray;
         arrayThatWantsToSort = new int[]{6,4,31,14,7,2};
