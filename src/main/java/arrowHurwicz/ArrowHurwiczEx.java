@@ -6,114 +6,31 @@ public class ArrowHurwiczEx {
     Задача о нелинейной прогаммировании градиентными методами
     Программа, решающая задачи нелинейного программирования методом Эрроу-Гурвица с точностью 0.0001
     В качестве лямбды значения 0.001
-    Вариант №5
 
-     */
 
-    /*
-    вариант из методички
     f(x_1,x_2)=-x_1 ^2 - x_2 ^2 -> max;
     {(x_1 - 7 ) ^ 2 + (x_2 - 7 ) ^2 <= 18
     {x_1;x_2 >= 0
 
     Возьмем любое допустимое решение системы ограничений в качестве начального приближения.
-   X0 = (5;6)
-   f(X0) = -5^2 -6^2 = -61
-     */
+           X0 = (5;6)
+           f(X0) = -5^2 -6^2 = -61
 
-    /*
     2. В качестве начального шага вычислений выберем лямбда = 0.1 а(0)=0
 
     3. Преобразуем неравенство к виду 18 - (x_1 - 7 ) ^ 2 + (x_2 - 7 ) ^2
-    введем g(x_1;x_2) = 18 - (x_1 - 7 ) ^ 2 + (x_2 - 7 ) ^2
-    Определим частные производные от функций f и g;
-    f'(x_1)=-2x_1;
-    f'(x_2)=-2x_2;
-    g'(x_1)=-2x_1+14;
-    g'(x_2)=-2x_2+14;
+            введем g(x_1;x_2) = 18 - (x_1 - 7 ) ^ 2 + (x_2 - 7 ) ^2
+            Определим частные производные от функций f и g;
+            f'(x_1)=-2x_1;
+            f'(x_2)=-2x_2;
+            g'(x_1)=-2x_1+14;
+            g'(x_2)=-2x_2+14;
 
     Далее запускаем итерационный процесс, координаты следующей точки будем находить по формулам
-     */
-//    private float x1 = 5;
-//    private float x1_prev;
-//    private float x2 = 6;
-//    private float x2_prev;
-//    private float prev_function;
-//    private float afunc = 0;
-//    private float afunc_prev = 0;
-//    private static final float LAMBDA = 0.1f;
-//    public ArrowHurwicz() {
-//        System.out.println(function(5,6));
-//        System.out.println(nextPointCoordinates(5));
-//        System.out.println(nextPointCoordinates(6));
-//        System.out.println(0.0001*10000);
-//        algorithm();
-//    }
-//    private float function(float x0, float x1) {
-//        float result;
-//        return result = -(x0 * x0) - (x1 * x1);
-//    }
-//
-//    private int f_x(int x) {
-//        return -2*x;
-//    }
-//    private int g_x(int x) {
-//        return -2*x+14;
-//    }
-//
-//    private float gx(float x1, float x2) {
-//
-//       return 18 - (float)Math.pow((x1 - 7),2) + (float)Math.pow((x2 - 7),2);
-//    }
-//
-//
-//    private float nextPointCoordinates(int x) {
-////        System.out.println("nextPoint");
-////        System.out.println(x);
-////        System.out.println(LAMBDA);
-////        System.out.println(f_x(x));
-////        System.out.println(f_x(x) * LAMBDA);
-//
-//        //calc a(k+1)
-//        if (gx(x1,x2) >= 0) {
-//            afunc = 0;
-//        } else {
-//            afunc = afunc_prev - (LAMBDA * (gx(x1,x2)));
-//        }
-//        return x+(LAMBDA*(f_x(x) +()));
-//    }
-////    private boolean accuracy() {
-////
-////    }
-////    private float a_k1() {
-////
-////        return a;
-////    }
-//
-//    private float algorithm() {
-//        while (true) {
-//
-//
-//            float a;
-//            a = function(nextPointCoordinates(5), nextPointCoordinates(6)) - function(5,6);
-//            a*=10000;
-//            System.out.println((int)a);
-//            if ((int)a > 1) {
-//                break;
-//            }
-///*
-//
-// */
-//        break;
-//        }
-//        return 0;
-//    }
-
+    */
     // Если точка в ОДЗ(проверка на одз), то проверяем достигнутую точность со значение функции в точке, которая последней попадала в область
 
     public ArrowHurwiczEx() {
-        System.out.println("ArrowHurwicz");
-//        System.out.println(g_function(4f, 4.8f));
         algorithm();
     }
     private float x1;
@@ -193,10 +110,8 @@ public class ArrowHurwiczEx {
                }
                prev_accuracy_X = f_from_x_function(next_x1,next_x2);
             }
-//            System.out.println("x1 = " + x1 + ", x2 = " + x2);
             x1 = next_x1;
             x2 = next_x2;
-//            break;
 
         }
         System.out.println("iteration_counter = " + iteration_counter );

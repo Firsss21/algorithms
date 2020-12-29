@@ -1,10 +1,12 @@
 package dualSimplexMethod;
 
 public class DualSimplexMethod {
+
     private static final float a = 33, b = 20, c = 12,
             a1 = 5, b1 = 2, c1 = 5,
             a2 = 4, b2 = 5, c2 = 1,
             p1 = 8, p2 = 4;
+
     public DualSimplexMethod() {
         printMatrix();
         Solve();
@@ -142,6 +144,10 @@ public class DualSimplexMethod {
 
         }
 
+    }
+
+    public static void main(String[] args) {
+        DualSimplexMethod dualSimplexMethod = new DualSimplexMethod();
     }
 
 }

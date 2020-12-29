@@ -6,8 +6,6 @@ import java.util.Arrays;
     Программа, решающая систему линейных уравнений
     методом Жордана-Гаусса с выбором главного элемента в таблице
 
-
-
  */
 public class JordanGauss {
     private static final int MATRIX_SIZE = 5;
@@ -59,7 +57,6 @@ public class JordanGauss {
                     currentAbsHighestIndex = i;
                 }
             }
-//            System.out.println("value = " + currentAbsHighestvalue + ", index = " + currentAbsHighestIndex);
 
 
             // swap row

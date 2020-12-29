@@ -1,13 +1,11 @@
 //package algorithms;
 
 import algorithms.*;
-import arrowHurwicz.ArrowHurwicz;
-import arrowHurwicz.ArrowHurwiczEx;
-import dualSimplexMethod.DualSimplexMethod;
-import dualSimplexMethod.DualSimplexMethodWithoutFractions;
-import dualSimplexMethod.ODZFinder;
-import jordanGauss.JordanGauss;
-import matrixGame.MatrixGame;
+import arrowHurwicz.*;
+import dualSimplexMethod.*;
+import jordanGauss.*;
+import matrixGame.*;
+
 
 import java.util.Arrays;
 import java.util.Scanner;

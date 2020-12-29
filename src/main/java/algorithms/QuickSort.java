@@ -1,15 +1,9 @@
 package algorithms;
 
-// Java program for implementation of QuickSort
 // Класс с квиксортом
 class QuickSort
 {
-    /* This function takes last element as pivot,
-       places the pivot element at its correct
-       position in sorted array, and places all
-       smaller (smaller than pivot) to left of
-       pivot and all greater elements to right
-       of pivot */
+
 
     /* Эта функция берет последний элемент как pivot, ставит его в нужное место в сортированном массиве
     и ставит все меньшие элементы влево, большие вправо. */

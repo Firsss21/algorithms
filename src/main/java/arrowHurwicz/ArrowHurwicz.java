@@ -5,31 +5,28 @@ public class ArrowHurwicz {
     Задача о нелинейной прогаммировании градиентными методами
     Программа, решающая задачи нелинейного программирования методом Эрроу-Гурвица с точностью 0.0001
     В качестве лямбды значения 0.001
-    Вариант №5
 
      */
 
     /*
-    вариант из методички
+
     f(x_1,x_2)=-x_1 ^2 - x_2 ^2 -> max;
     {(x_1 - 7 ) ^ 2 + (x_2 - 7 ) ^2 <= 18
     {x_1;x_2 >= 0
 
     Возьмем любое допустимое решение системы ограничений в качестве начального приближения.
-   X0 = (5;6)
-   f(X0) = -5^2 -6^2 = -61
-     */
+       X0 = (5;6)
+       f(X0) = -5^2 -6^2 = -61
 
-    /*
     2. В качестве начального шага вычислений выберем лямбда = 0.1 а(0)=0
 
     3. Преобразуем неравенство к виду 18 - (x_1 - 7 ) ^ 2 + (x_2 - 7 ) ^2
-    введем g(x_1;x_2) = 18 - (x_1 - 7 ) ^ 2 + (x_2 - 7 ) ^2
-    Определим частные производные от функций f и g;
-    f'(x_1)=-2x_1;
-    f'(x_2)=-2x_2;
-    g'(x_1)=-2x_1+14;
-    g'(x_2)=-2x_2+14;
+        введем g(x_1;x_2) = 18 - (x_1 - 7 ) ^ 2 + (x_2 - 7 ) ^2
+        Определим частные производные от функций f и g;
+        f'(x_1)=-2x_1;
+        f'(x_2)=-2x_2;
+        g'(x_1)=-2x_1+14;
+        g'(x_2)=-2x_2+14;
 
     Далее запускаем итерационный процесс, координаты следующей точки будем находить по формулам
      */
@@ -90,24 +87,14 @@ public class ArrowHurwicz {
                 a = 0;
             } else {
 
-                a = a_prev - (LAMBDA * (g_function(x1,x2)));
-//                int temp = (int)Math.round(a*100.0);
-//                a = (float) ((temp)/100.0);
+                a = a_prev - (LAMBDA * (g_function(x1, x2)));
             }
-//            System.out.println(a);
-//            System.out.println(g_function(x1,x2));
             next_x1 = getNextPointX1(x1);
             next_x2 = getNextPointX2(x2);
-//            int temp = (int)Math.round(next_x1*1000.0);
-//            next_x1 = (float) ((temp)/1000.0);
-//            temp = (int)Math.round(next_x2*1000.0);
-//            next_x2 = (float) ((temp)/1000.0);
+
             System.out.println(iteration_counter + ": next_x1 = "+next_x1+", next_x2 = " +next_x2);
 
             if   (g_function(next_x1,next_x2) > 0) {
-
-//                System.out.println("new accuracy is " + Math.abs(f_from_x_function(next_x1,next_x2)) + ", prev_accuracy is " + prev_accuracy_X);
-//                System.out.println("Accuracy = " + Math.abs(f_from_x_function(next_x1,next_x2) - prev_accuracy_X));
 
                 if  ((Math.abs(f_from_x_function(next_x1,next_x2) - prev_accuracy_X)) < 0.0001) {
 
@@ -117,8 +104,6 @@ public class ArrowHurwicz {
                     System.out.println("x_2 = " + next_x2);
                     System.out.println("Accuracy = " + Math.abs(f_from_x_function(next_x1,next_x2) - prev_accuracy_X));
                     System.out.println("f(x1,x2) = " + f_from_x_function(next_x1,next_x2));
-
-
                     break;
                 }
                 prev_accuracy_X = f_from_x_function(next_x1,next_x2);

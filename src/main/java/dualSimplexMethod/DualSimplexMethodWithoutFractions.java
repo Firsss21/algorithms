@@ -5,6 +5,11 @@ public class DualSimplexMethodWithoutFractions {
             a1 = 5, b1 = 2, c1 = 5,
             a2 = 4, b2 = 5, c2 = 1,
             p1 = 8, p2 = 4;
+
+//        private static final float a = 10, b = 30, c = 42,
+//        a1 = 2, b1 = 3, c1 = 3,
+//        a2 = 1, b2 = 4, c2 = 8,
+//        p1 = 10, p2 = 3;
     public DualSimplexMethodWithoutFractions() {
         Solve();
     }
@@ -128,6 +133,10 @@ public class DualSimplexMethodWithoutFractions {
 
         }
 
+    }
+
+    public static void main(String[] args) {
+        DualSimplexMethodWithoutFractions dualSimplexMethodWithoutFractions = new DualSimplexMethodWithoutFractions();
     }
 
 }

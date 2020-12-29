@@ -6,16 +6,12 @@ public class MatrixGame {
             {9,17},
             {12,8},
             };
-//private static final int[][] MATRIX = {
-//        {10,7},
-//        {8,11},
-//};
+
     private float p1,p2,q1,q2, winningValue;
     private int[] min = new int[MATRIX.length];
     private int[] max = new int[MATRIX.length];
     public MatrixGame() {
-//        getMaxFromColumn();
-//        getMinFromRow();
+
         getChances();
         play();
     }
@@ -57,44 +53,6 @@ public class MatrixGame {
         winningValue = (MATRIX[0][1] * p1) + (MATRIX[1][1] * p2);
     }
 
-    /*
-    Уравнения для игрока 1
-    9p_1 + 12 p_2 = y
-    17 p_1 + 8 p_2 = y
-    MATRIX[0][0] p_1 + MATRIX[1][0] p_2 = v;
-    MATRIX[0][1] p_1 + MATRIX[1][1] p_2 = v
-
-    p_1(MATRIX[0][0] -  MATRIX[0][1]) + p_2(MATRIX[1][0] - MATRIX[1][1]) = 0
-    p1 =  (1-p_1)(MATRIX[1][0] - MATRIX[1][1])/(MATRIX[0][0] -  MATRIX[0][1])
-    p_1 + p_2 = 1
-
-    4 p_2 = 8 p_1
-     p_2 = 2 * p_1
-      p_1 =
-
-     p_1 = 1/3
-     p_2 = 2/3
-
-    v =  17 * 1/3 + 8* 2/3
-   Уравнения для игрока 2
-    MATRIX[0][0] q_1 + MATRIX[0][1] q_2 = v;
-    MATRIX[1][0] q_1 + MATRIX[1][1] q_2 = v
-    -(MATRIX[0][0] - MATRIX[1][0])/(MATRIX[0][1] -  MATRIX[1][1])
-   9 q_1 + 17 q_2 = y
-   12 q_1 + 8 q_2 = y
-   q_1 + q_2 = 1
-
-    3 q_2 =  q_1
-    3q_2 + q_2 = 1
-    q_2 = 1/4
-    q_1 = 3/4
-    Ответ:
-     v =  17 * 1/3 + 8* 2/3
-      p_1 = 1/3
-     p_2 = 2/3
-     q_2 = 1/4
-     q_1 = 3/4
-     */
     /*
     Генерируем для каждого игрока 10 чисел от [0;1] с тремя нулями.
     Выбор стратегий игроками будем осуществлять используя геометрическое опредленние вероятности
