@@ -117,13 +117,169 @@
 ## Сортировки:
 
 + ### Пузырьковая сортировка
+
+ Пузырьковая сортировка - это сравнение соседних элементов и смена чисел местами, если оно больше/меньше.
+    После одного прохода по массиву последний элемент прохода по массиву(не массива) отсекается.
+    О(n) - идеал. O(n*n) - среднее и худшее время.
+    
+      public int[] sort(int[] array) {
+          int[] arrayToSort = array.clone();
+          boolean swap_elements;
+              for(int i = 0; i < arrayToSort.length - 1; i++) {
+                  swap_elements = false;
+                  for(int y = 0; y < (arrayToSort.length - i - 1); y++) {
+                      if (arrayToSort[y] > arrayToSort[y+1]) {
+                          swapElements(arrayToSort ,  y, y+1);
+                          swap_elements = true;
+                      }
+                  }
+                  if (!swap_elements) break;
+              }
+          return arrayToSort;
+      }
  
 + ### Сортировка выбором
+
+ Ищем минимальный элемент/максимальный элемент и ставим первым/последним.
+    O(n*n) худшее, среднее и лучшее.
+    
+    public int[] sort(int[] array) {
+        int[] arrayToSort = array.clone();
+        int minElementIndex;
+        for (int y = 0; y < arrayToSort.length; y++) {
+            minElementIndex = y;
+            for (int i = y + 1; i < arrayToSort.length; i++) {
+                if (arrayToSort[minElementIndex] > arrayToSort[i]) {
+                    minElementIndex = i;
+                }
+            }
+            if (minElementIndex != y) swapElements(arrayToSort, minElementIndex, y);
+        }
+        return arrayToSort;
+    }
     
 + ### Быстрая сортировка
+
+Алгоритм быстрой сортировки — это один из самых быстрых существующих алгоритмов сортировки, который является примером стратегии «разделяй и властвуй». Большинство готовых библиотек и методов по сортировке используют quick sort алгоритм как основу. Сложность: в худшем случае O(n^2), среднее O(n×log2n)
+
+- В начале выбирается “опорный” элемент массива. Это может быть любое число, но от выбора этого элемента сильно зависит эффективность алгоритма. Если нам известна медиана, то лучше выбирать элемент, который как можно ближе к медиане. 
+
+- Элементы в массиве делятся на две части: слева те кто меньше опорного элемента, справа те кто больше. Таким образом опорный элемент занимает свое место и больше никуда не двигается.
+
+- Для левого и правого массива действия повторяются рекурсивно.
+
+
+       void sort(int arr[], int low, int high) {
+           if (low < high) {
+               int pi = partition(arr, low, high);
+               sort(arr, low, pi - 1);
+               sort(arr, pi + 1, high);
+           }
+       }
+
+       int partition(int arr[], int low, int high) {
+           int pivot = arr[high];
+           int i = (low - 1);
+
+           for (int j = low; j < high; j++) {
+               if (arr[j] < pivot) {
+                   i++;
+                   swapElements(arr, j, i);
+               }
+           }
+           swapElements(arr, i + 1, high);
+           return i + 1;
+       }
     
 + ### Сортировка слияением
+
+Сортировка слиянием — алгоритм сортировки, использующий O(n) дополнительной памяти и работающий за O(nlog(n)) времени.
+
+- Если в рассматриваемом массиве один элемент, то он уже отсортирован — алгоритм завершает работу.
+
+- Иначе массив разбивается на две части, которые сортируются рекурсивно.
+
+- После сортировки двух частей массива к ним применяется процедура слияния, которая по двум отсортированным частям получает исходный отсортированный массив.
+
+Функция сортирует подотрезок массива с индексами в полуинтервале [left;right). 
+
+     public void sortUnsorted(int[] a, int low, int high) {
+         if (high <= low)
+             return;
+
+         int mid = low + (high - low) / 2;
+         sortUnsorted(a, low, mid);
+         sortUnsorted(a, mid + 1, high);
+
+         int[] buf = Arrays.copyOf(a, a.length);
+
+         for (int k = low; k <= high; k++)
+             buf[k] = a[k];
+
+         int i = low, j = mid + 1;
+         for (int k = low; k <= high; k++) {
+
+             if (i > mid) {
+                 a[k] = buf[j];
+                 j++;
+             } else if (j > high) {
+                 a[k] = buf[i];
+                 i++;
+             } else if (buf[j] < buf[i]) {
+                 a[k] = buf[j];
+                 j++;
+             } else {
+                 a[k] = buf[i];
+                 i++;
+             }
+         }
+     }
     
 + ### Сортировка слиянием без рекурсии
     
-    
+При итеративном алгоритме используется на O(logn) меньше памяти, которая раньше тратилась на рекурсивные вызовы. 
+
+    public void mergeSort(int[] arr) {
+        int[] temp = new int[arr.length];
+        int length = arr.length;
+        int i, j, k;
+        int left_left, left_right, right_left, right_right;
+
+
+        for(int step = 1; step < length; step *= 2 ) {
+            left_left = 0;
+            k = 0;
+
+            while (left_left + step < length) {
+                left_right = left_left + step - 1;
+                right_left = left_right + 1;
+                right_right = right_left + step - 1;
+
+                if (right_right >= length) right_right = length - 1;
+
+                i = left_left;
+                j = right_left;
+
+                while (i <= left_right && j <= right_right) {
+                    if (arr[i] <= arr[j])
+                        temp[k++] = arr[i++];
+                    else
+                        temp[k++] = arr[j++];
+                }
+
+                while (i <= left_right) temp[k++] = arr[i++];
+                while (j <= right_right) temp[k++] = arr[j++];
+
+                left_left = right_right + 1;
+
+
+            }
+
+            for (i = left_left; k < length; i++) temp[k++] = arr[i];
+            for (i = 0; i < length; i++) arr[i] = temp[i];
+            System.out.println("step " + step);
+            printArray(arr, step);
+
+            System.out.println(" ");
+        }
+    }
