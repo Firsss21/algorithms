@@ -283,3 +283,89 @@
             System.out.println(" ");
         }
     }
+
++ ### Бинарный поиск
+
+```java
+ public int binarySearch(int[] arr, int key) {
+    int left = 0;
+    int right = arr.length - 1;
+
+    int mid = (left + right) / 2;
+    while (left <= right) {
+        if (arr[mid] < key) {
+            left = mid + 1;
+        } else if (arr[mid] > key) {
+            right = mid - 1;
+        } else {
+            return arr[mid];
+        }
+        mid = (left + right) / 2;
+    }
+    return -1;
+ }
+```
+
++ ### Inorder traversal
+
+Traverse the left subtree
+
+Visit the root
+
+Traverse the right subtree
+
++ ### Preorder traversal
+
+Traverse the left subtree
+
+Visit the root
+
+Traverse the right subtree
+
++ ### Postorder traversal
+
+Traverse the left subtree
+
+Traverse the right subtree
+
+Visit the root
+
++ ### Reverse list
+
+```java
+public ListNode reverseList(ListNode head) {
+    ListNode first = head;
+    while (head!= null && head.next != null) {
+        ListNode temp = head.next.next;
+        ListNode next = head.next;
+        head.next.next = first;
+        first = next;
+        head.next = temp;
+    }
+    return first;
+}
+```
+
+v2
+
+```java
+public ListNode reverseList(ListNode head) {
+      if(head == null){
+        return head;
+    }
+    ListNode prev = null;
+    ListNode curr = head;
+    ListNode next = curr.next;
+    while(curr != null){
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+        if(next != null){
+            next = next.next;
+        }
+    }
+  head = prev;
+  return head;
+
+}
+```
